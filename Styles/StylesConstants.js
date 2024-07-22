@@ -40,7 +40,7 @@ export const _APP_STYLES_CONSTANTS = {
 const _GENERIC_COLORS = {
   WHITE: '#FFFFFF',
   BLACK: '#000000',
-  APP_COLOR: '#2897c5',
+  APP_COLOR: '#4D6AFA',
   APP_COLOR_100: '#cbdde5',
   APP_COLOR_200: '#96d2ec',
   APP_SECONDARY_COLOR: '#98240a',

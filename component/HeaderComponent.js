@@ -17,19 +17,6 @@ const HeaderComponent = (props) => {
 
     const HeaderRender = () => {
         switch (type) {
-            case _HEADER_TYPE.LOGIN:
-                return (
-                    <View style={Styles.LoginHeaderMain()}>
-                        <Image
-                            source={require('../images/logo-color.png')}
-                            style={{
-                                height: 70,
-                                width: 150,
-                                resizeMode: "contain",
-                            }}
-                        />
-                    </View>
-                )
             case _HEADER_TYPE.HOME:
                 return (
                     <View style={[Styles.LoginHeaderMain(), { backgroundColor: _GLOBAL_COLORS.APP_COLOR_100 }]}>
@@ -46,7 +33,7 @@ const HeaderComponent = (props) => {
                 )
             case _HEADER_TYPE.PAGE:
                 return (
-                    <View style={Style.LoginHeaderMain()}>
+                    <View style={Styles.LoginHeaderMain()}>
                         <TouchableOpacity
                             style={{
                                 flex: 1,
@@ -68,7 +55,7 @@ const HeaderComponent = (props) => {
                                 style={{ paddingRight: 5 }}
                                 color={_GLOBAL_COLORS.BLACK}
                             />
-                            <Text style={Style.BoldText()}>
+                            <Text style={Styles.BoldText()}>
                                 {pagename.toUpperCase()}
                             </Text>
                         </TouchableOpacity>

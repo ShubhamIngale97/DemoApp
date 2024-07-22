@@ -34,4 +34,11 @@ export default StyleSheet.create({
         color: _GLOBAL_COLORS.BLACK,
         fontWeight: 'bold',
       }),
+      LogoStyle: () => ({
+        height:  300,
+        width:  '80%',
+        resizeMode: 'contain',
+        alignSelf: 'center',
+      }),
+      
 })
