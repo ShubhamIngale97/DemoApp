@@ -162,7 +162,7 @@ const CustomTextInput = props => {
                 <FontAwesome
                     name={hide ? 'eye-slash' : 'eye'}
                     size={25}
-                    color={_GLOBAL_COLORS.APP_SECONDARY_COLOR}
+                    color={_GLOBAL_COLORS.APP_COLOR}
                     style={{ position: 'absolute', marginLeft: I18nManager.isRTL ? '65%' : '85%', marginTop: isPortrait ? '7%' : '4%' }}
                     onPress={() =>
                         setHide((current) => !current)
