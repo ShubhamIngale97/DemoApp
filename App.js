@@ -23,20 +23,19 @@ function App(props) {
 
   return (
     <Fragment>
-      
-        <StatusBar
-          backgroundColor={_GLOBAL_COLORS.BLACK}
-        />
-        {showSplashScreen ? (
-          <View style={{ flex: 1 }}>
-            <SplashScreen />
-          </View>
-        ) : (
-          <SafeAreaView
-        style={{
-          flex: 1,
-          backgroundColor: showSplashScreen ? _GLOBAL_COLORS.BACKDROP_COLOR : _GLOBAL_COLORS.BLACK
-        }}>
+      <StatusBar
+        backgroundColor={_GLOBAL_COLORS.BLACK}
+      />
+      {showSplashScreen ? (
+        <View style={{ flex: 1 }}>
+          <SplashScreen />
+        </View>
+      ) : (
+        <SafeAreaView
+          style={{
+            flex: 1,
+            backgroundColor: showSplashScreen ? _GLOBAL_COLORS.BACKDROP_COLOR : _GLOBAL_COLORS.BLACK
+          }}>
           <NavigationContainer>
             <Stack.Navigator
               initialRouteName='LoginNav'
@@ -50,9 +49,8 @@ function App(props) {
               <Stack.Screen name='LoginNav' component={LoginNav} />
             </Stack.Navigator>
           </NavigationContainer>
-          </SafeAreaView>
-        )}
-     
+        </SafeAreaView>
+      )}
     </Fragment>
   );
 }
