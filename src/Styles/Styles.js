@@ -80,5 +80,39 @@ export default StyleSheet.create({
       background: _GLOBAL_COLORS.WHITE,
     },
   }),
-
+  AlertLottie: () => ({
+    width: 150,
+    height: 150,
+  }),
+  ScuccesAlertLottie: () => ({
+    width: 180,
+    height: 180,
+  }),
+  CustomisableAlertButtonStyle: () => ({
+    backgroundColor: _GLOBAL_COLORS.BUTTON_COLOR,
+    borderColor: _GLOBAL_COLORS.APP_SECONDARY_COLOR,
+    borderWidth: 0.3,
+    borderRadius: 8,
+  }),
+  CustomisableAlertButtonLabelStyle: () => ({
+    color: '#fff',
+    width: '100%',
+    textAlign: 'center',
+    textTransform: 'uppercase',
+    fontWeight: 'bold',
+    ..._APP_FONT_SIZE_CONSTANTS.LABEL,
+  }),
+  CustomisableAlertButtonLeftStyle: () => ({
+    backgroundColor: _GLOBAL_COLORS.APP_SECONDARY_COLOR,
+    borderColor: _GLOBAL_COLORS.APP_COLOR,
+    borderWidth: 0.3,
+    borderRadius: 8,
+  }),
+  CustomisableAlertButtonLeftRightLabelStyle: () => ({
+    color: '#fff',
+    textAlign: 'center',
+    width: '100%',
+    fontWeight: 'bold',
+    ..._APP_FONT_SIZE_CONSTANTS.LABEL,
+  }),
 })

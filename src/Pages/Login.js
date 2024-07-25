@@ -1,14 +1,23 @@
-import React from 'react';
-import { Image, ScrollView, View } from 'react-native';
+import React, { useContext } from 'react';
+import {  Image, ScrollView, View } from 'react-native';
 import { _HEADER_TYPE } from '../Util/GlobalConstant';
 import Styles from '../Styles/Styles';
 import { _GLOBAL_COLORS } from '../Styles/StylesConstants';
 import FormBuilder from '../component/Form/FormBuilder';
 import { _FORMS } from '../component/Form/FormConfig';
+import { GlobalContext } from '../../App';
+import { ShowSuccessAlert } from '../Util/GlobalFunction';
+import { localized } from '../component/CommonUtil/CommonUtil';
 
 function Login(props) {
-    const Dologin = () => {
+    const { setLoginStatus } = useContext(GlobalContext)
 
+    const Dologin = (data) => {
+        ShowSuccessAlert(
+            flag => {setLoginStatus(false)},
+            localized('success_alert_lbl'),
+            localized('login_Success_lbl')
+        )
     }
     return (
         <View style={{ flex: 1, backgroundColor: _GLOBAL_COLORS.WHITE }}>
