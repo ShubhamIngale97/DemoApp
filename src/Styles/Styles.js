@@ -22,7 +22,7 @@ export default StyleSheet.create({
     ..._APP_STYLES_CONSTANTS.ELEVATION,
     elevation: 4,
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems:'center',
     paddingHorizontal: '4%',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },

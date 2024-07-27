@@ -1,4 +1,6 @@
 {
     "success_alert_lbl":"Success",
-    "login_Success_lbl":"Logged in Successfully"
+    "login_Success_lbl":"Logged in Successfully",
+    "ok_lbl":"Ok",
+    "home_lbl":"Home"
 }
