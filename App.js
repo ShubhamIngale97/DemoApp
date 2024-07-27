@@ -8,6 +8,7 @@ import { _GLOBAL_COLORS } from './src/Styles/StylesConstants';
 import Styles from './src/Styles/Styles';
 import CustomisableAlert from 'react-native-customisable-alert';
 import { _APP_FONT_SIZE_CONSTANTS } from './src/Styles/TextStyles';
+import DrawerNav from './src/Navigation/DrawerManager/DrawerNav';
 
 
 export const GlobalContext = createContext({
@@ -69,7 +70,6 @@ function App(props) {
               </NavigationContainer> :
               <NavigationContainer>
                 <Stack.Navigator
-                  initialRouteName='LoginNav'
                   screenOptions={{
                     headerShown: false,
                     contentStyle: {
@@ -77,7 +77,7 @@ function App(props) {
                     },
                   }}
                 >
-                  <Stack.Screen name='LoginNav' component={LoginNav} />
+                  <Stack.Screen name='DrawerNav' component={DrawerNav} />
                 </Stack.Navigator>
               </NavigationContainer>
             }
