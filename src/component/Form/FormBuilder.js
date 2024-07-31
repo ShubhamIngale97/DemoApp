@@ -9,6 +9,7 @@ import Styles from "../../Styles/Styles";
 import { _APP_FONT_SIZE_CONSTANTS } from "../../Styles/TextStyles";
 import { _GLOBAL_COLORS, __GLOBAL_COLORS } from "../../Styles/StylesConstants";
 import LottieView from "lottie-react-native";
+import { localized } from "../CommonUtil/CommonUtil";
 
 const fixEmptyObjRef = {}; // every render setting a new obj causing multiple render.
 
@@ -117,8 +118,8 @@ const FormBuilder = forwardRef(({
                 console.log(JSON.stringify(mandatory.current));
                 setForceUpdateValid(true);
                 showAlert({
-                    title: ('incomplete_info_lbl'),
-                    message: ('please_fill_mandatory_fields_lbl'),
+                    title: localized('incomplete_info_lbl'),
+                    message: localized('please_fill_mandatory_fields_lbl'),
                     alertType: 'error',
                     customIcon :<LottieView style={Styles.AlertLottie()} source={require('./../../images/lottie_json/Animation-Error.json')} autoPlay loop/>,
                     onPress: () => {
@@ -152,8 +153,8 @@ const FormBuilder = forwardRef(({
             setForceUpdateValid(true);
             console.log(JSON.stringify(mandatory.current));
             showAlert({
-                title: ('incomplete_info_lbl'),
-                message: ('please_fill_mandatory_fields_lbl'),
+                title: localized('incomplete_info_lbl'),
+                message: localized('please_fill_mandatory_fields_lbl'),
                 alertType: 'error',
                 customIcon :<LottieView style={Styles.AlertLottie()} source={require('./../../images/lottie_json/Animation-Error.json')} autoPlay loop/>,
                 onPress: () => {

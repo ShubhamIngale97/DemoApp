@@ -3,21 +3,14 @@ import {
   _APP_STYLES_CONSTANTS,
   _GLOBAL_COLORS,
 } from "../Styles/StylesConstants.js";
-import {
-  getFocusedRouteNameFromRoute,
-  
-} from "@react-navigation/native";
-import FontAwesome from "react-native-vector-icons/FontAwesome";
-import Profile from "../Pages/Profile.js";
-import { Text } from "react-native";
 import { _APP_FONT_SIZE_CONSTANTS } from "../styles/TextStyles";
-import HomeNav from "./HomeNav.js";
-
+import { _TAB_ARRAY } from "./NavArray.js";
+import { GetRenderIcons } from "../Util/GlobalFunction.js";
+import { TouchableOpacity, View } from "react-native";
+import * as Animatable from 'react-native-animatable'
+import { useEffect, useRef } from "react";
 const Tab = createBottomTabNavigator();
 
-const NullComp = () => {
-  return null;
-};
 const DrawerOpener = ({ navigation }) => ({
   tabPress: (e) => {
     e.preventDefault();
@@ -25,92 +18,95 @@ const DrawerOpener = ({ navigation }) => ({
   },
 });
 
+const TabButton = (props) => {
+  const {item,onPress,accessibilityState} = props
+  const focused = accessibilityState.selected
+  const iconName = focused ? item.activeIconName : item.inActiveIconName;
+  const viewRef = useRef(null)
+
+  useEffect(()=>{
+    if(focused) {
+viewRef.current.animate({0:{scale:1},1:{scale:1.5}})
+    }else{
+      viewRef.current.animate({0:{scale:1.5},1:{scale:1}})
+    }
+  },[focused])
+
+  return (
+    <TouchableOpacity style={{
+      flex:1,
+      justifyContent:'center',
+      alignItems:'center'
+    }}
+    onPress={onPress}
+    activeOpacity={1}
+    >
+      <Animatable.View
+      ref={viewRef}
+      duration={1000}
+      style={{
+        flex:1,
+      justifyContent:'center',
+      alignItems:'center'
+      }}
+      > 
+      {GetRenderIcons(item.iconType,iconName,focused ? 30: item.route == 'HomeNav' ? 30 : undefined)}
+      </Animatable.View>
+    </TouchableOpacity>
+  )
+}
+
 const TabNav = () => {
   return (
     <Tab.Navigator
       initialRouteName="HomeNav"
-      screenOptions={({ route }) => ({
-        tabBarActiveTintColor: _GLOBAL_COLORS.APP_COLOR,
-        tabBarHideOnKeyboard: true,
+      screenOptions={() => ({
         headerShown: false,
-        contentStyle: { ..._APP_STYLES_CONSTANTS.APP_BACKGROUND_COLOR },
+        tabBarShowLabel: false,
         tabBarStyle: {
-          backgroundColor: _GLOBAL_COLORS.APP_COLOR_100,
-          elevation: 0,
-        },
-        tabBarLabel: ({ focused }) => {
-          return (
-            <Text
-              style={{
-                fontSize: 10,
-                color:
-                  focused && getFocusedRouteNameFromRoute(route) === 'Home'
-                    ? _GLOBAL_COLORS.APP_COLOR
-                    : '#4D4D4FCC',
-              }}
-            >
-              {'Home'}
-            </Text>
-          )
-        },
-        tabBarIcon: ({ color, size, focused }) => {
-          return (
-            <FontAwesome
-              name="home"
-              color={
-                focused && getFocusedRouteNameFromRoute(route) === 'Home'
-                  ? _GLOBAL_COLORS.APP_COLOR
-                  : '#4D4D4FCC'
-              }
-              size={25}
-            />
-          )
-        },
+          height: 60,
+          position: 'absolute',
+          bottom: 16,
+          right: 16,
+          left: 16,
+          borderRadius: 16,
+          shadowColor: '#000',
+          shadowOffset: { width: 0, height: 2 },
+          shadowOpacity: 0.5,
+          shadowRadius: 2,
+        }
       })}
     >
-      <Tab.Screen
-        name="HomeNav"
-        component={HomeNav}
-        options={{}}
-        listeners={({ navigation }) => ({
-          tabPress: (e) => {
-            e.preventDefault()
-            global.HomefeatureCode = undefined
-            navigation.navigate('Home')
-          },
-        })}
-      />
-      <Tab.Screen
-        name="Profile"
-        component={Profile}
-        options={{
-          tabBarLabel: 'Profile',
-          tabBarIcon: ({ color, size, focused }) => (
-            <FontAwesome
-              name="user"
-              color={focused ? _GLOBAL_COLORS.APP_COLOR : '#4D4D4FCC'}
-              size={22}
-            />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="CustomDrawer"
-        component={NullComp}
-        options={{
-          tabBarLabel: 'More',
-          tabBarIcon: ({ color, size, focused }) => (
-            <FontAwesome
-              name="navicon"
-              color={focused ? _GLOBAL_COLORS.APP_COLOR : '#4D4D4FCC'}
-              size={22}
-            />
-          ),
-        }}
-        listeners={DrawerOpener}
-      />
+      {_TAB_ARRAY.map((item, index) => {
+        return (
+          <Tab.Screen
+            key={index}
+            name={item.route}
+            component={item.component}
+            options={{
+              tabBarIcon: ({ focused }) => {
+                const iconName = focused ? item.activeIconName : item.inActiveIconName;
+                return GetRenderIcons(item.iconType, iconName);
+              },
+              tabBarButton: (props) => <TabButton {...props} item={item} />
+            }}
+            listeners={({ navigation }) =>
+              item.route === 'NullComp'
+                ? DrawerOpener({ navigation })
+                : item.route === 'HomeNave' ? {
+                  tabPress: (e) => {
+                    e.preventDefault();
+                    global.HomefeatureCode = undefined;
+                    navigation.navigate('Home');
+                  },
+                } : undefined
+            }
+
+          />
+        );
+      })}
     </Tab.Navigator>
-  )
+  );
 };
 
 export default TabNav;
