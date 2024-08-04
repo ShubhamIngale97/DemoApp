@@ -5,7 +5,6 @@ import { useNavigation } from '@react-navigation/native'
 import { _HEADER_TYPE } from '../Util/GlobalConstant'
 import Styles from '../Styles/Styles'
 import { _GLOBAL_COLORS } from '../Styles/StylesConstants'
-import { localized } from './CommonUtil/CommonUtil'
 import { _APP_FONT_SIZE_CONSTANTS } from '../Styles/TextStyles'
 
 const HeaderComponent = (props) => {
@@ -22,7 +21,7 @@ const HeaderComponent = (props) => {
             case _HEADER_TYPE.HOME:
                 return (
                     <View style={[Styles.LoginHeaderMain(), { backgroundColor: _GLOBAL_COLORS.APP_COLOR }]}>
-                        <Text style={{..._APP_FONT_SIZE_CONSTANTS.BOLDTEXT,color:_GLOBAL_COLORS.WHITE}}>{pagename}</Text>
+                        <Text style={{..._APP_FONT_SIZE_CONSTANTS.BOLDTEXT,color:_GLOBAL_COLORS.WHITE}}>{pagename.toUpperCase()}</Text>
                     </View>
                 )
             case _HEADER_TYPE.PAGE:

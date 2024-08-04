@@ -48,7 +48,7 @@ export default StyleSheet.create({
     fontWeight: 'bold',
   }),
   ButtonStyle: (isPortrait) => ({
-    backgroundColor: _GLOBAL_COLORS.BUTTON_COLOR,
+    backgroundColor: _GLOBAL_COLORS.APP_COLOR,
     width: '65%',
     height: 50,
     justifyContent: 'center',
@@ -89,7 +89,7 @@ export default StyleSheet.create({
     height: 180,
   }),
   CustomisableAlertButtonStyle: () => ({
-    backgroundColor: _GLOBAL_COLORS.BUTTON_COLOR,
+    backgroundColor: _GLOBAL_COLORS.APP_COLOR,
     borderColor: _GLOBAL_COLORS.APP_SECONDARY_COLOR,
     borderWidth: 0.3,
     borderRadius: 8,
@@ -103,7 +103,7 @@ export default StyleSheet.create({
     ..._APP_FONT_SIZE_CONSTANTS.LABEL,
   }),
   CustomisableAlertButtonLeftStyle: () => ({
-    backgroundColor: _GLOBAL_COLORS.APP_SECONDARY_COLOR,
+    backgroundColor: _GLOBAL_COLORS.APP_COLOR,
     borderColor: _GLOBAL_COLORS.APP_COLOR,
     borderWidth: 0.3,
     borderRadius: 8,
