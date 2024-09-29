@@ -18,7 +18,6 @@ export const _FORMS = {
                 name: "User Name",
                 _id: "uname",
                 type: "TextInput",
-                autoCapitalize: "characters",
                 mode: "outlined",
                 hasDefaultValue: false,
                 keyboardType: "visible-password",

@@ -12,6 +12,7 @@ import { Alert, I18nManager, Platform } from "react-native";
 import { localized } from "../component/CommonUtil/CommonUtil";
 import { closeAlert, showAlert } from "react-native-customisable-alert";
 import Styles from "../Styles/Styles";
+import auth from '@react-native-firebase/auth';
 import LottieView from "lottie-react-native";
 
 export const GetRenderIcons = (iconType, name, size = 20, color = _GLOBAL_COLORS.BUTTON_COLOR, style = { marginRight: I18nManager.isRTL ? '5%' : '5%' }) => {
@@ -166,3 +167,19 @@ export const ShowWarningAlert = (
     })
   
 }
+
+export const LoginUsingFireBase = (userName, password, callback) => {
+  auth()
+      .signInWithEmailAndPassword(userName, password)
+      .then(() => {
+          if (callback) {
+              callback(true,localized('login_Success_lbl')); 
+          }
+      })
+      .catch(error => {
+        const errorMessage = error.message.split('] ')[1] || "Something went wrong";          
+          if (callback) {
+              callback(false,errorMessage); 
+          }
+      });
+};

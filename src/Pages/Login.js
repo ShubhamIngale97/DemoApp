@@ -5,37 +5,31 @@ import Styles from '../Styles/Styles';
 import { _GLOBAL_COLORS } from '../Styles/StylesConstants';
 import FormBuilder from '../component/Form/FormBuilder';
 import { _FORMS } from '../component/Form/FormConfig';
-import { GlobalContext } from '../../App';
-import { ShowSuccessAlert } from '../Util/GlobalFunction';
+import { LoginUsingFireBase, ShowErrorAlert, ShowSuccessAlert } from '../Util/GlobalFunction';
 import { localized } from '../component/CommonUtil/CommonUtil';
-import auth from '@react-native-firebase/auth';
+
 
 
 function Login(props) {
-    const { setLoginStatus } = useContext(GlobalContext)
 
     const Dologin = (data) => {
-        auth()
-            .createUserWithEmailAndPassword('jane.doe@example.com', 'SuperSecretPassword!')
-            .then(() => {
-                console.log('User account created & signed in!');
+        LoginUsingFireBase(data.uname, data.password, (flag,message) => {
+            if (flag) {
                 ShowSuccessAlert(
-                    flag => { setLoginStatus(false) },
+                    flag => { },
                     localized('success_alert_lbl'),
-                    localized('login_Success_lbl')
-                )
-            })
-            .catch(error => {
-                if (error.code === 'auth/email-already-in-use') {
-                    console.log('That email address is already in use!');
-                }
+                    message
+                );
+            } else {
+                ShowErrorAlert(
+                    flag =>{},
+                    localized('login_Fail_lbl'),
+                    message
+                  )
+            }
+        }); 
+     }
 
-                if (error.code === 'auth/invalid-email') {
-                    console.log('That email address is invalid!');
-                }
-                console.error(error);
-            });
-    }
     return (
         <View style={{ flex: 1, backgroundColor: _GLOBAL_COLORS.WHITE }}>
             <ScrollView>

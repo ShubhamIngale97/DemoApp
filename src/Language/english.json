@@ -1,9 +1,11 @@
 {
     "success_alert_lbl":"Success",
     "login_Success_lbl":"Logged in Successfully",
+    "login_Fail_lbl":"Logged in Failed",
     "ok_lbl":"Ok",
     "home_lbl":"Home",
     "profile_lbl":"Profile",
     "please_fill_mandatory_fields_lbl":"Please fill mandatory fields.. ",
-    "incomplete_info_lbl":"Incomplete information"
+    "incomplete_info_lbl":"Incomplete information",
+    "dublicate_email":"That email address is already in use!"
 }
