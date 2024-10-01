@@ -1,11 +1,11 @@
 import React, { useContext, useState } from 'react';
 import { Image, ScrollView, View } from 'react-native';
-import { _HEADER_TYPE } from '../Util/GlobalConstant';
+import { _ASYNC_KEYS, _HEADER_TYPE } from '../Util/GlobalConstant';
 import Styles from '../Styles/Styles';
 import { _GLOBAL_COLORS } from '../Styles/StylesConstants';
 import FormBuilder from '../component/Form/FormBuilder';
 import { _FORMS } from '../component/Form/FormConfig';
-import { LoginUsingFireBase, ShowErrorAlert, ShowSuccessAlert } from '../Util/GlobalFunction';
+import { _storeData, LoginUsingFireBase, ShowErrorAlert, ShowSuccessAlert } from '../Util/GlobalFunction';
 import { localized } from '../component/CommonUtil/CommonUtil';
 import ActivityLoader from './ActivityLoader';
 import { GlobalContext } from '../../App';
@@ -23,7 +23,11 @@ function Login(props) {
             setIsLoading(false)
             if (flag) {
                 ShowSuccessAlert(
-                    flag => {setLoginStatus(false)},
+                    flag => {
+                        _storeData(_ASYNC_KEYS.IS_LOGGED_IN, "true", (data) => {
+                            setLoginStatus(false)
+                        })
+                    },
                     localized('success_alert_lbl'),
                     message
                 );

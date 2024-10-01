@@ -19,38 +19,38 @@ const DrawerOpener = ({ navigation }) => ({
 });
 
 const TabButton = (props) => {
-  const {item,onPress,accessibilityState} = props
+  const { item, onPress, accessibilityState } = props
   const focused = accessibilityState.selected
   const iconName = focused ? item.activeIconName : item.inActiveIconName;
   const viewRef = useRef(null)
 
-  useEffect(()=>{
-    if(focused) {
-viewRef.current.animate({0:{scale:1},1:{scale:1.5}})
-    }else{
-      viewRef.current.animate({0:{scale:1.5},1:{scale:1}})
+  useEffect(() => {
+    if (focused) {
+      viewRef.current.animate({ 0: { scale: 1 }, 1: { scale: 1.5 } })
+    } else {
+      viewRef.current.animate({ 0: { scale: 1.5 }, 1: { scale: 1 } })
     }
-  },[focused])
+  }, [focused])
 
   return (
     <TouchableOpacity style={{
-      flex:1,
-      justifyContent:'center',
-      alignItems:'center'
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center'
     }}
-    onPress={onPress}
-    activeOpacity={1}
+      onPress={onPress}
+      activeOpacity={1}
     >
       <Animatable.View
-      ref={viewRef}
-      duration={1000}
-      style={{
-        flex:1,
-      justifyContent:'center',
-      alignItems:'center'
-      }}
-      > 
-      {GetRenderIcons(item.iconType,iconName,focused ? 30: item.route == 'HomeNav' ? 30 : undefined)}
+        ref={viewRef}
+        duration={1000}
+        style={{
+          flex: 1,
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}
+      >
+        {GetRenderIcons(item.iconType, iconName, focused ? 30 : item.route == 'HomeNav' ? 30 : undefined)}
       </Animatable.View>
     </TouchableOpacity>
   )

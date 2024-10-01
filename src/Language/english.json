@@ -7,5 +7,9 @@
     "profile_lbl":"Profile",
     "please_fill_mandatory_fields_lbl":"Please fill mandatory fields.. ",
     "incomplete_info_lbl":"Incomplete information",
-    "dublicate_email":"That email address is already in use!"
+    "dublicate_email":"That email address is already in use!",
+    "logout_lbl":"Log Out",
+    "do_you_want_to_logout_lbl":"Do You Want To Logout ?",
+    "no_lbl":"No",
+    "yes_lbl":"Yes"
 }

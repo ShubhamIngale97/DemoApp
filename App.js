@@ -9,6 +9,7 @@ import Styles from './src/Styles/Styles';
 import CustomisableAlert from 'react-native-customisable-alert';
 import { _APP_FONT_SIZE_CONSTANTS } from './src/Styles/TextStyles';
 import DrawerNav from './src/Navigation/DrawerManager/DrawerNav';
+import { updateInitialSetUp } from './src/Util/GlobalFunction';
 
 
 export const GlobalContext = createContext({
@@ -22,6 +23,9 @@ function App(props) {
 
 
   useEffect(() => {
+    updateInitialSetUp((flag) => {
+      setLoginStatus(flag)
+    })
     const splashScreen = setTimeout(() => {
       setShowSplashScreen(false);
       StatusBar.setHidden(false);

@@ -115,4 +115,20 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     ..._APP_FONT_SIZE_CONSTANTS.LABEL,
   }),
+  ButtonStyle: () => ({
+    backgroundColor: _GLOBAL_COLORS.BUTTON_COLOR,
+    width: '90%',
+    height: 50,
+    justifyContent: 'center',
+    alignSelf: 'center',
+    ..._APP_STYLES_CONSTANTS.BORDER_RADIUS,
+    ..._APP_STYLES_CONSTANTS.ELEVATION,
+  }),
+  ButtonText: () => ({
+    textAlign: 'center',
+    ..._APP_FONT_SIZE_CONSTANTS.BUTTON,
+    padding: 7,
+    color: _GLOBAL_COLORS.BUTTON_TEXT,
+    fontWeight: 'bold',
+  }),
 })
