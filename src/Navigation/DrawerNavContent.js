@@ -9,12 +9,13 @@ import { localized } from '../component/CommonUtil/CommonUtil';
 import { Image } from 'react-native-animatable';
 import { _APP_FONT_SIZE_CONSTANTS, _MENU_ICON_SIZE, _SUBMENU_ICON_SIZE } from '../Styles/TextStyles';
 import { _DRAWER_ARRAY } from './NavArray';
+import { useNavigation } from '@react-navigation/native';
 
 function DrawerNavContent(props) {
     const { setLoginStatus } = useContext(GlobalContext);
     const [submenuVisible, setSubmenuVisible] = useState({}); // Track visibility of each submenu
     const [activeItem, setActiveItem] = useState('HOME'); // Track active menu item
-
+    const navigation = useNavigation();
     const menuItems = _DRAWER_ARRAY
 
     const renderProfileView = () => {
@@ -58,6 +59,7 @@ function DrawerNavContent(props) {
                                     toggleSubmenu(item.name);
                                 }else{
                                     setSubmenuVisible('');
+                                    navigation.navigate(item?.navigateTo || "PageNotFound");
                                 }
                                 setActiveItem(item.name);
                             }}
@@ -98,7 +100,7 @@ function DrawerNavContent(props) {
                                         key={subIndex}
                                         style={style.submenuItem}
                                         onPress={() => {
-                                           
+                                            navigation.navigate(subItem?.navigateTo || "PageNotFound");
                                         }}
                                     >
                                         {GetRenderIcons(

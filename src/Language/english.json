@@ -11,5 +11,7 @@
     "logout_lbl":"Log Out",
     "do_you_want_to_logout_lbl":"Do You Want To Logout ?",
     "no_lbl":"No",
-    "yes_lbl":"Yes"
+    "yes_lbl":"Yes",
+    "page_not_found_lbl":"Page Not Found",
+    "settings_lbl":"Settings"
 }

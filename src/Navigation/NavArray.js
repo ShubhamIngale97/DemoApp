@@ -40,7 +40,8 @@ export const _DRAWER_ARRAY = [
     name: 'HOME',
     icon: 'home-circle-outline',
     iconType: 'MaterialCommunityIcons',
-    submenu: []
+    submenu: [],
+    navigateTo:'Home'
   },
   {
     name: 'MAPS',
@@ -62,5 +63,12 @@ export const _DRAWER_ARRAY = [
     iconType: 'MaterialIcons',
     icon: 'auto-graph',
     submenu: []
+  },
+  {
+    name: 'SETTINGS',
+    iconType: 'MaterialIcons',
+    icon: 'settings',
+    submenu: [],
+    navigateTo:'Settings'
   },
 ]

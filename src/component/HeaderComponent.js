@@ -21,10 +21,10 @@ const HeaderComponent = (props) => {
             case _HEADER_TYPE.HOME:
                 return (
                     <View style={[Styles.LoginHeaderMain(), { backgroundColor: _GLOBAL_COLORS.APP_COLOR }]}>
-                        <Text style={{..._APP_FONT_SIZE_CONSTANTS.BOLDTEXT,color:_GLOBAL_COLORS.WHITE}}>{pagename.toUpperCase()}</Text>
+                        <Text style={{ ..._APP_FONT_SIZE_CONSTANTS.BOLDTEXT, color: _GLOBAL_COLORS.WHITE }}>{pagename.toUpperCase()}</Text>
                     </View>
                 )
-            case _HEADER_TYPE.PAGE:
+            case _HEADER_TYPE.HOME_PAGE:
                 return (
                     <View style={Styles.LoginHeaderMain()}>
                         <TouchableOpacity
@@ -49,6 +49,41 @@ const HeaderComponent = (props) => {
                                 color={_GLOBAL_COLORS.BLACK}
                             />
                             <Text style={Styles.BoldText()}>
+                                {pagename.toUpperCase()}
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
+                )
+            case _HEADER_TYPE.PAGE:
+                return (
+                    <View style={[Styles.LoginHeaderMain(),
+                    {
+                        justifyContent: 'flex-start',
+                        alignItems: 'flex-start',
+                    }
+                    ]}>
+                        <TouchableOpacity
+                            style={{
+                                flex: 1,
+                                flexDirection: 'row',
+                                justifyContent: 'flex-start',
+                                alignItems: 'center',
+                            }}
+                            onPress={() => {
+                                if (BackHandler) {
+                                    BackHandler()
+                                } else {
+                                    navigation.goBack()
+                                }
+                            }}
+                        >
+                            <FontAwesome
+                                name="arrow-left"
+                                size={15}
+                                style={{ paddingRight: 5 }}
+                                color={_GLOBAL_COLORS.WHITE}
+                            />
+                            <Text style={[Styles.BoldText(),{color:_GLOBAL_COLORS.TEXT_COLOR_WHITE,..._APP_FONT_SIZE_CONSTANTS.HEADER}]}>
                                 {pagename.toUpperCase()}
                             </Text>
                         </TouchableOpacity>

@@ -1,6 +1,6 @@
 import React, { Fragment, createContext, useEffect, useState } from 'react';
 import { SafeAreaView, StatusBar, View } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';  // Import NavigationContainer
+import { NavigationContainer, useNavigationContainerRef } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SplashScreen from './src/component/SplashScreen';
 import LoginNav from './src/Navigation/LoginNav';
@@ -10,22 +10,24 @@ import CustomisableAlert from 'react-native-customisable-alert';
 import { _APP_FONT_SIZE_CONSTANTS } from './src/Styles/TextStyles';
 import DrawerNav from './src/Navigation/DrawerManager/DrawerNav';
 import { updateInitialSetUp } from './src/Util/GlobalFunction';
+import PageNotFound from './src/Navigation/PageNotFound';
 
 
 export const GlobalContext = createContext({
   setLoginStatus: () => { },
-})
+});
 
 function App(props) {
   const [showSplashScreen, setShowSplashScreen] = useState(true);
   const Stack = createNativeStackNavigator();
   const [isLogin, setIsLogin] = useState(true);
 
+  const navigationRef = useNavigationContainerRef();  // Navigation ref for programmatic control
 
   useEffect(() => {
     updateInitialSetUp((flag) => {
-      setLoginStatus(flag)
-    })
+      setLoginStatus(flag);
+    });
     const splashScreen = setTimeout(() => {
       setShowSplashScreen(false);
       StatusBar.setHidden(false);
@@ -37,14 +39,12 @@ function App(props) {
   }, []);
 
   const setLoginStatus = (flag) => {
-    setIsLogin(flag)
-  }
+    setIsLogin(flag);
+  };
 
   return (
     <Fragment>
-      <StatusBar
-        backgroundColor={_GLOBAL_COLORS.BLACK}
-      />
+      <StatusBar backgroundColor={_GLOBAL_COLORS.BLACK} />
       {showSplashScreen ? (
         <View style={{ flex: 1 }}>
           <SplashScreen />
@@ -53,43 +53,42 @@ function App(props) {
         <SafeAreaView
           style={{
             flex: 1,
-            backgroundColor: showSplashScreen ? _GLOBAL_COLORS.BACKDROP_COLOR : _GLOBAL_COLORS.BLACK
+            backgroundColor: showSplashScreen ? _GLOBAL_COLORS.BACKDROP_COLOR : _GLOBAL_COLORS.BLACK,
           }}>
-          <GlobalContext.Provider value={{
-            setLoginStatus
-          }}>
-            {isLogin ?
-              <NavigationContainer>
-                <Stack.Navigator
-                  initialRouteName='LoginNav'
-                  screenOptions={{
-                    headerShown: false,
-                    contentStyle: {
-                      backgroundColor: _GLOBAL_COLORS.WHITE,
-                    },
-                  }}
-                >
-                  <Stack.Screen name='LoginNav' component={LoginNav} />
-                </Stack.Navigator>
-              </NavigationContainer> :
-              <NavigationContainer>
-                <Stack.Navigator
-                  screenOptions={{
-                    headerShown: false,
-                    contentStyle: {
-                      backgroundColor: _GLOBAL_COLORS.WHITE,
-                    },
-                  }}
-                >
-                  <Stack.Screen name='DrawerNav' component={DrawerNav} />
-                </Stack.Navigator>
-              </NavigationContainer>
-            }
+          <GlobalContext.Provider value={{ setLoginStatus }}>
+            <NavigationContainer
+              ref={navigationRef}
+              onUnhandledAction={(action) => {
+                if (action.type === 'NAVIGATE' && action.payload?.name) {
+                  const availableRoutes = navigationRef.getState()?.routes.map(r => r.name) || [];
+                  if (!availableRoutes.includes(action.payload.name)) {
+                    console.warn(`${action.payload.name} screen is not defined. Redirecting to PageNotFound.`);
+                    navigationRef.navigate('PageNotFound');
+                  }
+                }
+              }}
+            >
+              <Stack.Navigator
+                screenOptions={{
+                  headerShown: false,
+                  contentStyle: {
+                    backgroundColor: _GLOBAL_COLORS.WHITE,
+                  },
+                }}>
+                {isLogin ? (
+                  <Stack.Group>
+                    <Stack.Screen name="LoginNav" component={LoginNav} />
+                    <Stack.Screen name="DrawerNav" component={DrawerNav} />
+                  </Stack.Group>
+                ) : (
+                  <Stack.Screen name="DrawerNav" component={DrawerNav} />
+                )}
+                <Stack.Screen name="PageNotFound" component={PageNotFound} />
+              </Stack.Navigator>
+            </NavigationContainer>
           </GlobalContext.Provider>
           <CustomisableAlert
-            titleStyle={{
-              ..._APP_FONT_SIZE_CONSTANTS.HEADER,
-            }}
+            titleStyle={{ ..._APP_FONT_SIZE_CONSTANTS.HEADER }}
             btnStyle={Styles.CustomisableAlertButtonStyle()}
             btnLeftStyle={Styles.CustomisableAlertButtonLeftStyle()}
             btnLabelStyle={Styles.CustomisableAlertButtonLabelStyle()}

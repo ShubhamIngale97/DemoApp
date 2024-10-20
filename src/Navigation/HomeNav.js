@@ -4,6 +4,7 @@ import { _APP_STYLES_CONSTANTS } from '../Styles/StylesConstants';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from '../Pages/Home';
 import Profile from '../Pages/Profile';
+import Settings from '../Pages/Settings';
 
 function HomeNav() {
     const Stack = createNativeStackNavigator();
@@ -27,6 +28,11 @@ function HomeNav() {
         <Stack.Screen
           name="Profile"
           component={Profile}
+          options={{headerShown: false}}
+        />
+         <Stack.Screen
+          name="Settings"
+          component={Settings}
           options={{headerShown: false}}
         />
         </Stack.Navigator>
