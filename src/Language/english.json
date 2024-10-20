@@ -13,5 +13,6 @@
     "no_lbl":"No",
     "yes_lbl":"Yes",
     "page_not_found_lbl":"Page Not Found",
-    "settings_lbl":"Settings"
+    "settings_lbl":"Settings",
+    "notification_lbl":"Notification"
 }

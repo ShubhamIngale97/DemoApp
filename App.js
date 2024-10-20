@@ -17,7 +17,7 @@ export const GlobalContext = createContext({
   setLoginStatus: () => { },
 });
 
-function App(props) {
+function App() {
   const [showSplashScreen, setShowSplashScreen] = useState(true);
   const Stack = createNativeStackNavigator();
   const [isLogin, setIsLogin] = useState(true);
@@ -62,7 +62,6 @@ function App(props) {
                 if (action.type === 'NAVIGATE' && action.payload?.name) {
                   const availableRoutes = navigationRef.getState()?.routes.map(r => r.name) || [];
                   if (!availableRoutes.includes(action.payload.name)) {
-                    console.warn(`${action.payload.name} screen is not defined. Redirecting to PageNotFound.`);
                     navigationRef.navigate('PageNotFound');
                   }
                 }

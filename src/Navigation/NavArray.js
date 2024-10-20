@@ -1,6 +1,7 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Profile from "../Pages/Profile"
 import HomeNav from "./HomeNav"
+import Notification from "../Pages/Notification";
 
 const Tab = createBottomTabNavigator();
 
@@ -25,6 +26,14 @@ export const _TAB_ARRAY = [
     activeIconName: 'user',
     inActiveIconName: 'user-o',
     component: Profile
+  },
+  {
+    route: 'Notification',
+    label: 'notification_lbl',
+    iconType: 'Ionicons',
+    activeIconName: 'notifications-circle-sharp', // Corrected icon name
+    inActiveIconName: 'notifications-outline', // Corrected icon name
+    component: Notification
   },
   {
     route: 'NullComp',

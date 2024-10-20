@@ -30,7 +30,7 @@ function DrawerNavContent(props) {
                         style={style.profileImage}
                         source={require('../images/MyProfilePhoto.png')}
                     />
-                    <Text style={style.name}>Shubham Jotiba Ingale</Text>
+                    <Text style={style.name}>SHUBHAM JOTIBA INGALE</Text>
                     <Text style={style.company}>Software Engineer</Text>
                 </ImageBackground>
             </View>
@@ -175,7 +175,7 @@ const style = StyleSheet.create({
     name: {
         fontSize: 18,
         fontWeight: 'bold',
-        color: _GLOBAL_COLORS.TEXT_COLOR_3,
+        color: _GLOBAL_COLORS.APP_COLOR,
         marginTop: 10,
     },
     company: {

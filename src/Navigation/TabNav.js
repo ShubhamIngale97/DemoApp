@@ -50,7 +50,7 @@ const TabButton = (props) => {
           alignItems: 'center'
         }}
       >
-        {GetRenderIcons(item.iconType, iconName, focused ? 30 : item.route == 'HomeNav' ? 30 : undefined)}
+        {GetRenderIcons(item.iconType, iconName, focused ? 25 : item.route == 'HomeNav' ? 30 : undefined)}
       </Animatable.View>
     </TouchableOpacity>
   )
