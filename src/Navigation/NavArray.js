@@ -10,31 +10,57 @@ const NullComp = () => {
 
 
 export const _TAB_ARRAY = [
-    {
-      route: 'HomeNav',
-      label: 'home_lbl',
-      iconType: 'MaterialCommunityIcons',
-      activeIconName: 'home-circle',
-      inActiveIconName: 'home-circle-outline',
-      component: HomeNav
-    },
-    {
-      route: 'Profile',
-      label: 'profile_lbl',
-      iconType: 'FontAwesome',
-      activeIconName: 'user',
-      inActiveIconName: 'user-o',
-      component: Profile
-    },
-    {
-      route: 'NullComp',
-      label: 'more_lbl',
-      iconType: 'AntDesign',
-      activeIconName: 'menuunfold', // Corrected icon name
-      inActiveIconName: 'menu-fold', // Corrected icon name
-      component: NullComp
-    }
-  ];
+  {
+    route: 'HomeNav',
+    label: 'home_lbl',
+    iconType: 'MaterialCommunityIcons',
+    activeIconName: 'home-circle',
+    inActiveIconName: 'home-circle-outline',
+    component: HomeNav
+  },
+  {
+    route: 'Profile',
+    label: 'profile_lbl',
+    iconType: 'FontAwesome',
+    activeIconName: 'user',
+    inActiveIconName: 'user-o',
+    component: Profile
+  },
+  {
+    route: 'NullComp',
+    label: 'more_lbl',
+    iconType: 'AntDesign',
+    activeIconName: 'menuunfold', // Corrected icon name
+    inActiveIconName: 'menu-fold', // Corrected icon name
+    component: NullComp
+  }
+];
 export const _DRAWER_ARRAY = [
-
+  {
+    name: 'HOME',
+    icon: 'home-circle-outline',
+    iconType: 'MaterialCommunityIcons',
+    submenu: []
+  },
+  {
+    name: 'MAPS',
+    icon: 'map-marker-circle',
+    submenu: [
+      {
+        name: 'Daily',
+        icon: 'schedule'
+      },
+      {
+        name: 'Weekly',
+        icon: 'calendar-week'
+      },
+    ],
+    iconType: 'MaterialCommunityIcons',
+  },
+  {
+    name: 'GRAPH',
+    iconType: 'MaterialIcons',
+    icon: 'auto-graph',
+    submenu: []
+  },
 ]

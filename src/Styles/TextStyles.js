@@ -33,4 +33,7 @@ export const _APP_FONT_SIZE_CONSTANTS = {
   }
   
   export const _ICON_SIZE = 15
-  
+
+  export const _MENU_ICON_SIZE = 30
+
+  export const _SUBMENU_ICON_SIZE = 24
