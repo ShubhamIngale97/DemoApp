@@ -15,6 +15,7 @@ import Styles from "../Styles/Styles";
 import auth from '@react-native-firebase/auth';
 import LottieView from "lottie-react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { ASYNC_KEYS } from "./Constants";
 
 export const GetRenderIcons = (iconType, name, size = 20, color = _GLOBAL_COLORS.BUTTON_COLOR, style = { marginRight: I18nManager.isRTL ? '5%' : '5%' }) => {
   switch (iconType) {
@@ -222,7 +223,7 @@ export const _deleteData = async (key, callback) => {
 };
 
 export const updateInitialSetUp = async (callback) => {
-  _retrieveData(_ASYNC_KEYS.IS_LOGGED_IN, (data) => {    
+  _retrieveData(ASYNC_KEYS.IS_LOGGED_IN, (data) => {    
     if (data != undefined && data == "true") {
       callback(false)
     } else {

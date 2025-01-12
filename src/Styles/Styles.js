@@ -131,4 +131,48 @@ export default StyleSheet.create({
     color: _GLOBAL_COLORS.BUTTON_TEXT,
     fontWeight: 'bold',
   }),
+  backgroundShade:() => ({
+    flex:1,
+    backgroundColor:_GLOBAL_COLORS.BACKDROP_COLOR,
+    padding:8
+  }),
+  modalStyle:() => ({
+    backgroundColor: _GLOBAL_COLORS.WHITE,
+    ..._APP_STYLES_CONSTANTS.BORDER_RADIUS,
+    width: '90%',
+    alignSelf: 'center',
+    borderColor: _GLOBAL_COLORS.GREY_COLOR,
+    ..._APP_STYLES_CONSTANTS.ELEVATION,
+    minHeight:'50%',
+    maxHeight: '70%',
+    marginVertical:  '7%',
+  }),
+  modalHeaderStyle:() => ({
+    padding: '2%',
+    justifyContent: 'center',
+    ..._APP_STYLES_CONSTANTS.BORDER_BOTTOM_WIDTH,
+    borderColor: _GLOBAL_COLORS.GREY_COLOR,
+  }),
+  headingText:() => ({
+    ..._APP_FONT_SIZE_CONSTANTS.BUTTON,
+    fontWeight: 'bold',
+    color: _GLOBAL_COLORS.APP_COLOR,
+    textAlign:'center'
+  }),
+  autoSyncList: () => ({
+    flexDirection: 'row',
+    ..._APP_STYLES_CONSTANTS.BORDER_WIDTH,
+    borderColor: _GLOBAL_COLORS.GREY_COLOR,
+    ..._APP_STYLES_CONSTANTS.BORDER_RADIUS,
+    marginVertical: 5,
+    alignSelf: 'center',
+    width: '90%',
+    ..._APP_STYLES_CONSTANTS.ELEVATION,
+    backgroundColor: _GLOBAL_COLORS.WHITE,
+    paddingHorizontal: '5%',
+  }),
+  viewItem:() => ({
+    flex:1,
+    paddingVertical:'1%'
+  })
 })

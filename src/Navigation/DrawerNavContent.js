@@ -3,13 +3,15 @@ import { StyleSheet, Text, TouchableOpacity, View, ImageBackground } from 'react
 import { GlobalContext } from '../../App';
 import Styles from '../Styles/Styles';
 import { _deleteData, GetRenderIcons, ShowWarningAlert } from '../Util/GlobalFunction';
-import { _ASYNC_KEYS, _ICON_TYPE } from '../Util/GlobalConstant';
 import { _GLOBAL_COLORS } from '../Styles/StylesConstants';
 import { localized } from '../component/CommonUtil/CommonUtil';
 import { Image } from 'react-native-animatable';
 import { _APP_FONT_SIZE_CONSTANTS, _MENU_ICON_SIZE, _SUBMENU_ICON_SIZE } from '../Styles/TextStyles';
 import { _DRAWER_ARRAY } from './NavArray';
 import { useNavigation } from '@react-navigation/native';
+import { ASYNC_KEYS } from '../Util/Constants';
+import { _ICON_TYPE } from '../Util/GlobalConstant';
+import { getDrawerNavMenu } from '../Util/Details';
 
 function DrawerNavContent(props) {
     const { setLoginStatus } = useContext(GlobalContext);
@@ -65,7 +67,7 @@ function DrawerNavContent(props) {
                             }}
                         >
                             {GetRenderIcons(
-                                item.iconType ? item.iconType :_ICON_TYPE.MATERIALICONS,
+                                item.iconType ? item.iconType :_ICON_TYPE.MATERIALICON,
                                 item.icon,
                                 _MENU_ICON_SIZE,
                                 activeItem === item.name
@@ -132,10 +134,16 @@ function DrawerNavContent(props) {
                     ]}
                     onPress={() => {
                         ShowWarningAlert(flag => {
-                            if (flag) {
-                                _deleteData(_ASYNC_KEYS.IS_LOGGED_IN, (Data) => {
-                                    setLoginStatus(true);
-                                });
+                            if (flag) {                                
+                                try{
+                                    _deleteData(ASYNC_KEYS.IS_LOGGED_IN, () => {
+                                        setLoginStatus(true);
+                                    }); 
+                                }catch(e){
+                                    console.log("_deleteData : "+e);
+                                    
+                                }
+                          
                             }
                         },
                             localized('logout_lbl'),

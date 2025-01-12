@@ -39,6 +39,8 @@ function App() {
   }, []);
 
   const setLoginStatus = (flag) => {
+    console.log("setLoginStatus"+flag);
+    
     setIsLogin(flag);
   };
 
@@ -77,7 +79,7 @@ function App() {
                 {isLogin ? (
                   <Stack.Group>
                     <Stack.Screen name="LoginNav" component={LoginNav} />
-                    <Stack.Screen name="DrawerNav" component={DrawerNav} />
+                    {/* <Stack.Screen name="DrawerNav" component={DrawerNav} /> */}
                   </Stack.Group>
                 ) : (
                   <Stack.Screen name="DrawerNav" component={DrawerNav} />

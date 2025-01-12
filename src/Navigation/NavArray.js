@@ -81,3 +81,20 @@ export const _DRAWER_ARRAY = [
     navigateTo:'Settings'
   },
 ]
+
+export const _SYNC_MENU = [
+  {
+    name:'categories',
+    label:"categories_lbl",
+    api:'https://fakestoreapi.com/products/categories',
+    iconType: 'MaterialIcons',
+    icon: 'category',
+  },
+  {
+    name:'product',
+    label:"product_lbl",
+    api:'https://fakestoreapi.com/products',
+    iconType: 'FontAwesome',
+    icon: 'product-hunt',
+  },
+]

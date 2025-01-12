@@ -9,6 +9,7 @@ import { GetRenderIcons } from "../Util/GlobalFunction.js";
 import { TouchableOpacity, View } from "react-native";
 import * as Animatable from 'react-native-animatable'
 import { useEffect, useRef } from "react";
+import { getTabNavMenu } from "../Util/Details.js";
 const Tab = createBottomTabNavigator();
 
 const DrawerOpener = ({ navigation }) => ({
@@ -57,6 +58,8 @@ const TabButton = (props) => {
 }
 
 const TabNav = () => {
+  const menu = getTabNavMenu()
+
   return (
     <Tab.Navigator
       initialRouteName="HomeNav"

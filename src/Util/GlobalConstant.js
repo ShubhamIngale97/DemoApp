@@ -17,7 +17,3 @@ export const _ICON_TYPE = {
   MATERIALICON: "MaterialIcons",
   FONTISTO: "Fontisto"
 }
-
-export const _ASYNC_KEYS = {
-  IS_LOGGED_IN: 'IS_LOGGED_IN'
-}

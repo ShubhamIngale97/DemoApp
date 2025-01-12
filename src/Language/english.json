@@ -14,5 +14,9 @@
     "yes_lbl":"Yes",
     "page_not_found_lbl":"Page Not Found",
     "settings_lbl":"Settings",
-    "notification_lbl":"Notification"
+    "notification_lbl":"Notification",
+    "error_message_lbl":"Request Failed..",
+    "sync_modal":"Sync Menu",
+    "categories_lbl":"Categories",
+    "product_lbl":"Products"
 }
